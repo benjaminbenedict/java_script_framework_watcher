@@ -1,12 +1,13 @@
 <template>
-  <div class="home">
-    <h1>All Photos</h1>
-    <div v-for="photo in photos">
-      <h2>{{ photo.name }}</h2>
+  <div class="React">
+    <h1>test</h1>
+    <p>{{ forks }}</p>
+    <!-- <div v-for="photo in photos"> -->
+    <!-- <h2>{{ photo.name }}</h2>
       <img v-bind:src="photo.url" v-bind:alt="photo.name" />
       <p>Width: {{ photo.width }}</p>
       <p>Height: {{ photo.height }}</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -17,7 +18,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      photos: [],
+      forks: [],
     };
   },
   created: function () {
@@ -25,9 +26,10 @@ export default {
   },
   methods: {
     indexPhotos: function () {
-      axios.get("/api/photos").then((response) => {
-        console.log("photos index", response);
-        this.photos = response.data;
+      axios.get("/facebook/react").then((response) => {
+        console.log("react", response);
+        this.forks = response.data["forks"];
+        console.log(response.data["forks"]);
       });
     },
   },
